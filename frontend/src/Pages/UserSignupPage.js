@@ -1,3 +1,4 @@
+import { Axios } from "axios";
 import React from "react";
 import { findRenderedDOMComponentWithClass } from "react-dom/test-utils";
 import {signup} from '../api/ApiCalls';
@@ -40,8 +41,10 @@ class UserSignupPage extends React.Component{
         try{
            const response = await signup(body);
         }catch(error){
-            
-            this.setState({errors : error.response.data.validationErrors});
+            if(error.response.data.validationErrors){
+                this.setState({errors : error.response.data.validationErrors});
+
+            }
             
         }
         this.setState({PendingApiCall:false});
