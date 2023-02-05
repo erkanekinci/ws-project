@@ -5,7 +5,9 @@ import org.slf4j.Logger;
 
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestHeader;
+import org.springframework.web.bind.annotation.RestController;
 
+@RestController
 public class AuthController {
 
     private static final  Logger Log = LoggerFactory.getLogger(AuthController.class);
