@@ -1,4 +1,3 @@
-import { Axios } from "axios";
 import React from "react";
 import { findRenderedDOMComponentWithClass } from "react-dom/test-utils";
 import {signup} from '../api/ApiCalls';
@@ -6,8 +5,7 @@ import Input from "../components/Input";
 class UserSignupPage extends React.Component{
 
     state = {
-        Username: null,
-        Tc :null,
+        tc :null,
         Password: null,
         PasswordRepeat: null,
         PendingApiCall: false,
@@ -17,8 +15,17 @@ class UserSignupPage extends React.Component{
 
     onChange = event =>{
         const { name , value } = event.target;
-        const errors = {... this.state.errors}
+        const errors = {...this.state.errors}
         errors[name] = undefined
+        if(name === 'Password' || name === "PasswordRepeat"){
+            if(name === 'Password' && value !== this.state.PasswordRepeat){
+                errors.PasswordRepeat ="Şifreler uyuşmuyor";
+            }else if (name === "PasswordRepeat" && value !== this.state.Password){
+                errors.PasswordRepeat ="Şifreler uyuşmuyor";
+            }else{
+                errors.PasswordRepeat = undefined;
+            }
+        }
         this.setState({
             [name]: value,
             errors 
@@ -31,8 +38,7 @@ class UserSignupPage extends React.Component{
 
 
         const body = {
-            Username : this.state.Username,
-            Tc : this.state.Tc,
+            tc : this.state.tc,
             Password : this.state.Password
         };
 
@@ -53,29 +59,20 @@ class UserSignupPage extends React.Component{
 
     render(){
         const {PendingApiCall , errors} = this.state;
-        const{Username , Tc} = errors;
+        const{ tc,Password,PasswordRepeat} = errors;
         return(
             <div className="container">
                 <form>
                     <h1 className="text-center">Kayıt OL</h1>
-                    <Input name = "Username" label= "Kullanıcı adı" error = {Username} onChange = {this.onChange} />
-                    <Input name = "Tc" label= "TC Kimlik Numarası" error = {Tc} onChange = {this.onChange} />
-                    
-                   
-                    <div className="form-group">
-                        <label>Şifre</label>
-                        <input className="form-control" name = "Password" type = "password"  onChange={this.onChange}/> 
-                    </div>
-                    <div className="form-group">
-                        <label>Şifre Tekrar</label>
-                        <input className="form-control" name= "PasswordRepeat" type = "password" onChange={this.onChange} /> 
-                    </div>
+                    <Input name = "tc" label= "TC Kimlik Numarası" error = {tc} onChange = {this.onChange} />
+                    <Input name = "Password" label= "Şifre" error = {Password} onChange = {this.onChange} type="password"/>
+                    <Input name = "PasswordRepeat" label= "Şifre Tekrar" error = {PasswordRepeat} onChange = {this.onChange} type="password"/>
                     <div className="text-center">
                         <button 
                         className="btn btn-primary" 
                         onClick={this.onClikcSignUp}
-                        disabled = {this.state.PendingApiCall}> 
-                        {this.state.PendingApiCall && <span className="spinner-border spinner-border-sm"></span> } Kayıt ol
+                        disabled = {PendingApiCall || PasswordRepeat !== undefined}> 
+                        {PendingApiCall && <span className="spinner-border spinner-border-sm"></span> } Kayıt ol
                         </button>
                     </div>
                 

@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import UserSignupPage from './Pages/UserSignupPage';
+import LoginPage from './Pages/LoginPage';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import './bootstrap-override.scss'
@@ -9,7 +10,7 @@ import './bootstrap-override.scss'
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <UserSignupPage />
+    <LoginPage />
   </React.StrictMode>
 );
 
