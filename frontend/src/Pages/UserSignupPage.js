@@ -6,6 +6,7 @@ class UserSignupPage extends React.Component{
 
     state = {
         tc :null,
+        adsoyad: null,
         Password: null,
         PasswordRepeat: null,
         PendingApiCall: false,
@@ -38,6 +39,7 @@ class UserSignupPage extends React.Component{
 
 
         const body = {
+            adsoyad :this.state.adsoyad,
             tc : this.state.tc,
             Password : this.state.Password
         };
@@ -64,6 +66,7 @@ class UserSignupPage extends React.Component{
             <div className="container">
                 <form>
                     <h1 className="text-center">Kayıt OL</h1>
+                    <Input name = "adsoyad" label= "Ad Soyad" error = {tc} onChange = {this.onChange} />
                     <Input name = "tc" label= "TC Kimlik Numarası" error = {tc} onChange = {this.onChange} />
                     <Input name = "Password" label= "Şifre" error = {Password} onChange = {this.onChange} type="password"/>
                     <Input name = "PasswordRepeat" label= "Şifre Tekrar" error = {PasswordRepeat} onChange = {this.onChange} type="password"/>

@@ -24,6 +24,7 @@ public class WsApplication {
 				Users user = new Users();
 				user.setTc("11111111111");
 				user.setPassword("P4ssword");
+				user.setAdsoyad("Ahmet Mehmet");
 				userService.save(user);
 			}
 		};

@@ -1,5 +1,6 @@
 package com.myproject.ws.user;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
@@ -30,5 +31,9 @@ public class Users {
     @NotEmpty
     @Pattern(regexp="^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d).*$",message = "Şifre 1 küçük harf, 1 büyük harf ve 1 özel karakter içermelidir")
     public String Password;
+
+    @NotNull
+    @NotEmpty
+    public String adsoyad;
 
 }
