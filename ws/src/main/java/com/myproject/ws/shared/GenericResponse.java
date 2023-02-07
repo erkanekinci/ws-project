@@ -1,4 +1,4 @@
-package com.myproject.ws;
+package com.myproject.ws.shared;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

@@ -19,6 +19,6 @@ public class UserAuthService implements UserDetailsService {
         Users inDB = userRepo.findByTc(tc);
         if(inDB == null)
             throw new UsernameNotFoundException("Kullanıcı bulunamadı");
-        return null;
+        return inDB;
     }
 }

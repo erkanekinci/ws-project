@@ -10,11 +10,20 @@ import lombok.Data;
 import lombok.NonNull;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.UniqueElements;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.AuthorityUtils;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
+
+import java.io.Serial;
+import java.util.Collection;
 
 
 @Data
 @Entity
-public class Users {
+public class Users implements UserDetails {
+    @Serial
+    private static final long serialVersionUID = 3196229870887684480L;
     @Id
     @GeneratedValue
     private long Id;
@@ -36,4 +45,33 @@ public class Users {
     @NotEmpty
     public String adsoyad;
 
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return AuthorityUtils.createAuthorityList("Role_user");
+    }
+
+    @Override
+    public String getUsername() {
+        return tc;
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true;
+    }
 }
