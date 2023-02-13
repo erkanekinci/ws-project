@@ -3,15 +3,14 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import UserSignupPage from './Pages/UserSignupPage';
 import LoginPage from './Pages/LoginPage';
-import App from './App';
 import reportWebVitals from './reportWebVitals';
 import './bootstrap-override.scss'
+import ApiProgress from './shared/ApiProgress';
+import App from './container/App';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
-    <LoginPage />
-  </React.StrictMode>
+    <App/>
 );
 
 // If you want to start measuring performance in your app, pass a function

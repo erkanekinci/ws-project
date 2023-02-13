@@ -2,6 +2,7 @@ import React from "react";
 import { findRenderedDOMComponentWithClass } from "react-dom/test-utils";
 import {signup} from '../api/ApiCalls';
 import Input from "../components/Input";
+import { withApiProgress } from "../shared/ApiProgress";
 class UserSignupPage extends React.Component{
 
     state = {
@@ -9,7 +10,6 @@ class UserSignupPage extends React.Component{
         adsoyad: null,
         Password: null,
         PasswordRepeat: null,
-        PendingApiCall: false,
         errors:{}
 
     };
@@ -44,7 +44,6 @@ class UserSignupPage extends React.Component{
             Password : this.state.Password
         };
 
-        this.setState({ PendingApiCall : true});
    
         try{
            const response = await signup(body);
@@ -55,27 +54,35 @@ class UserSignupPage extends React.Component{
             }
             
         }
-        this.setState({PendingApiCall:false});
     };
         
 
     render(){
-        const {PendingApiCall , errors} = this.state;
+        const {errors} = this.state;
         const{ tc,Password,PasswordRepeat} = errors;
+        const {pendingApiCall} = this.props;
         return(
             <div className="container">
                 <form>
                     <h1 className="text-center">Kayıt OL</h1>
+                    <div className="mb-3">
                     <Input name = "adsoyad" label= "Ad Soyad" error = {tc} onChange = {this.onChange} />
+                    </div>
+                    <div className="mb-3">
                     <Input name = "tc" label= "TC Kimlik Numarası" error = {tc} onChange = {this.onChange} />
+                    </div>
+                    <div className="mb-3">
                     <Input name = "Password" label= "Şifre" error = {Password} onChange = {this.onChange} type="password"/>
+                    </div>
+                    <div className="mb-3">
                     <Input name = "PasswordRepeat" label= "Şifre Tekrar" error = {PasswordRepeat} onChange = {this.onChange} type="password"/>
+                    </div>
                     <div className="text-center">
                         <button 
                         className="btn btn-primary" 
                         onClick={this.onClikcSignUp}
-                        disabled = {PendingApiCall || PasswordRepeat !== undefined}> 
-                        {PendingApiCall && <span className="spinner-border spinner-border-sm"></span> } Kayıt ol
+                        disabled = {pendingApiCall || PasswordRepeat !== undefined}> 
+                        {pendingApiCall && <span className="spinner-border spinner-border-sm"></span> } Kayıt ol
                         </button>
                     </div>
                 
@@ -87,5 +94,6 @@ class UserSignupPage extends React.Component{
     }
 }
 
+const UserSignupPageWithApiProgress = withApiProgress(UserSignupPage , '/api/1.0/users');
 
-export default UserSignupPage;
+export default UserSignupPageWithApiProgress;
