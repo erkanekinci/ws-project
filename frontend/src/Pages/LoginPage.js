@@ -31,12 +31,13 @@ class LoginPage extends Component {
             username :this.state.tc,
             password : this.state.password
             
-        };
+        }
         this.setState({
             error: null
         })
         try {
             await login(creds);
+            this.props.history.push('/');
         } catch (apiError) {
             if(apiError.response.data.message === "Unauthorized"){
                this.setState({
