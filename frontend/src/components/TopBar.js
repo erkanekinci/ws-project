@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom';
 
 
 class TopBar extends Component {
-    
+
     render() {
-        const{isLoggedIn } = this.props;
+        const{isLoggedIn , onLogoutSuccess } = this.props;
 
         let links = (
         <ul className='navbar-nav ml-auto '>
@@ -28,10 +28,8 @@ class TopBar extends Component {
         if (isLoggedIn){
             links =(
                 <ul className='navbar-nav ml-auto '>
-                
-        
                 <li >
-                <Link className='nav-link' to = "/">
+                <Link className='nav-link' onClick={onLogoutSuccess} to = "/">
                 Çıkış Yap
                 </Link>
                 </li>
