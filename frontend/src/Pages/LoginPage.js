@@ -12,10 +12,6 @@ class LoginPage extends Component {
         error: null
     }
 
-    
-
-    
-
     onChange = event => {
         const {name ,value} = event.target;
         this.setState({
@@ -27,6 +23,7 @@ class LoginPage extends Component {
 
     onClickLogin = async event => {
         event.preventDefault();
+        const {onLoginSuccess} = this.props;
         const creds = {
             username :this.state.tc,
             password : this.state.password
@@ -38,6 +35,7 @@ class LoginPage extends Component {
         try {
             await login(creds);
             this.props.history.push('/');
+            onLoginSuccess();
         } catch (apiError) {
             if(apiError.response.data.message === "Unauthorized"){
                this.setState({

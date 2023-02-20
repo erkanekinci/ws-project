@@ -6,13 +6,25 @@ import HomePage from "../Pages/HomePage";
 import {HashRouter as Router ,Route ,Redirect,Switch} from 'react-router-dom'
 import TopBar from "../components/TopBar";
 
-function App() {
+class App extends React.component () {
+  state = {
+     isLoggedIn :  false,
+};
+
+// onLoginSuccess = () =>{
+//   this.setState({
+//     isLoggedIn : true
+//   })
+// }
   
-  return (
+   render(){
+
+    const{isLoggedIn} = this.state;
+    return (
     
     <div >
       <Router>
-      <TopBar/>
+      <TopBar isLoggedIn ={isLoggedIn}  />
       <Switch>
         <Route exact path= "/" component={HomePage}/>
         <Route path= "/login" component={LoginPage}/>
@@ -23,7 +35,9 @@ function App() {
       </Router>
     </div>
   );
-}
+  }
+}  
+
 
 export default App;
 
