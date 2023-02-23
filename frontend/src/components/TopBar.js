@@ -8,7 +8,7 @@ class TopBar extends Component {
         const{isLoggedIn , onLogoutSuccess } = this.props;
 
         let links = (
-        <ul className='navbar-nav ml-auto p-2'>
+        <ul className='navbar-nav ml-auto p-1'>
         <li >
             <Link className='nav-link' to="/login">
             Giriş Yap
@@ -27,7 +27,7 @@ class TopBar extends Component {
 
         if (isLoggedIn){
             links =(
-                <ul className='navbar-nav ml-auto p-2'>
+                <ul className='navbar-nav ml-auto p-1'>
                 <li >
                 <Link className='nav-link' onClick={onLogoutSuccess} to = "/">
                 Çıkış Yap
