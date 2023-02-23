@@ -59,14 +59,14 @@ class UserSignupPage extends React.Component{
 
     render(){
         const {errors} = this.state;
-        const{ tc,Password,PasswordRepeat} = errors;
+        const{ adsoyad,tc,Password,PasswordRepeat} = errors;
         const {pendingApiCall} = this.props;
         return(
             <div className="container w-50 p-3">
                 <form>
-                    <h1 className="text-center">Kayıt OL</h1>
+                    <h1 className="text-center">Kayıt Ol</h1>
                     <div className="mb-3">
-                    <Input name = "adsoyad" label= "Ad Soyad" error = {tc} onChange = {this.onChange} />
+                    <Input name = "adsoyad" label= "Ad Soyad" error = {adsoyad} onChange = {this.onChange} />
                     </div>
                     <div className="mb-3">
                     <Input name = "tc" label= "TC Kimlik Numarası" error = {tc} onChange = {this.onChange} />
@@ -82,7 +82,7 @@ class UserSignupPage extends React.Component{
                         className="btn btn-primary" 
                         onClick={this.onClikcSignUp}
                         disabled = {pendingApiCall || PasswordRepeat !== undefined}> 
-                        {pendingApiCall && <span className="spinner-border spinner-border-sm"></span> } Kayıt ol
+                        {pendingApiCall && <span className="spinner-border spinner-border-sm"></span> } Kayıt Ol
                         </button>
                     </div>
                 
