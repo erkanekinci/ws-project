@@ -62,7 +62,7 @@ class UserSignupPage extends React.Component{
         const{ tc,Password,PasswordRepeat} = errors;
         const {pendingApiCall} = this.props;
         return(
-            <div className="container">
+            <div className="container w-50 p-3">
                 <form>
                     <h1 className="text-center">Kayıt OL</h1>
                     <div className="mb-3">

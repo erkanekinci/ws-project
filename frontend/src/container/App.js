@@ -5,7 +5,7 @@ import LoginPage from "../Pages/LoginPage";
 import HomePage from "../Pages/HomePage";
 import {HashRouter as Router ,Route ,Redirect,Switch} from 'react-router-dom'
 import TopBar from "../components/TopBar";
-
+import DaskPage from "../Pages/DaskPage"
 class App extends React.Component {
   state = {
      isLoggedIn :  false,
@@ -36,7 +36,8 @@ class App extends React.Component {
         {!isLoggedIn && <Route path= "/login" component={(props) => {
           return <LoginPage {...props} onLoginSuccess = {this.onLoginSuccess} />
         }}/>}
-        <Route path= "/signup" component={UserSignupPage}/>
+        <Route path="/signup" component={UserSignupPage}/>
+        <Route path="/dask-sigortasi" component={DaskPage}/>
         <Redirect to = '/'/>
       </Switch>
       
