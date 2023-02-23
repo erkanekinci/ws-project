@@ -1,6 +1,10 @@
 import React from 'react';
 import * as bootstrap from 'bootstrap'
 import { Link } from 'react-router-dom';
+import pic from "../images/hizmet.png"
+import ekippic from "../images/ekip.png"
+import skala from "../images/skala.png"
+
 
 class HomePage extends React.Component {
 
@@ -14,37 +18,43 @@ class HomePage extends React.Component {
 
 
             <div className='container-fluid'>
-                <div class="container text-center">
-                    <h1>NEDEN BİZ?</h1>
+                <div class="container text-center mb-3" >
+                    <h1 className='mb-3'>NEDEN BİZ?</h1>
+
                     <div class="row justify-content-start">
                         <div class="col-4 ">
-                            Hızlı ve Kaliteli Hizmet
+                            <figure class="figure">
+                                <img src={pic} class="figure-img img-fluid rounded" alt="..."/>
+                                    <figcaption class="figure-caption">Hızlı ve Kaliteli Hizmet</figcaption>
+                            </figure>
+                            
+
                         </div>
                         <div class="col-4 ">
-                            Uzman bir Ekip
+                        <figure class="figure">
+                                <img src={ekippic} class="figure-img img-fluid rounded" alt="..."/>
+                                    <figcaption class="figure-caption">Uzman Bir Ekip</figcaption>
+                            </figure>
+                            
                         </div>
                         <div class="col-4 ">
-                        Her ihtiyacınıza yönelik paranızın karşılığını veren geniş ürün skalası
+                        <figure class="figure">
+                                <img src={skala} class="figure-img img-fluid rounded" />
+                                    <figcaption class="figure-caption">Her ihtiyacınıza yönelik paranızın  </figcaption>
+                                    <figcaption class="figure-caption"> karşılığını veren geniş ürün skalası</figcaption>
+                            </figure>
                         </div>
-                        <div class="col-4 ">
-                            One of two columns
-                        </div>
-                        <div class="col-4 ">
-                            One of two columns
-                        </div>
-                        <div class="col-4 ">
-                            One of two columns
-                        </div>
+                        
 
                     </div>
-                    
+
 
                 </div>
 
-                
+
 
                 <div align="center" className='mb-5 p-3'>
-                    <h1>Tıklayın, Hemen Bir Teklif Alın
+                    <h1 className='mb-4'>Tıklayın, Hemen Online Bir Teklif Alın
                     </h1>
 
                     <Link to="/dask-sigortasi">
