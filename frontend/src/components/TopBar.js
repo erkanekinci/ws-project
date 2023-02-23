@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-
+import logo from "../images/analogo.png"
 
 class TopBar extends Component {
 
@@ -43,7 +43,11 @@ class TopBar extends Component {
                 <nav className="navbar navbar-dark navbar-expand">
                 <div className="container-fluid">
                     
-                    <Link className="navbar-brand " to="/">Sigorta</Link>
+                    <Link className="navbar-brand " to="/">
+                    <img src={logo} class="figure-img img-fluid rounded"  width={30} alt="..."/> 
+                    EESigorta
+                    </Link>
+                    
                     {links}
                 </div>
             </nav>
